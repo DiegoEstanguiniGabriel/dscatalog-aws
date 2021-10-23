@@ -68,7 +68,7 @@ public class ProductService {
             throw new DatabaseException("Integrity Violation");
         }
         catch (EmptyResultDataAccessException e){
-            throw new DatabaseException("ID not found: " + id);
+            throw new ResourceNotFoundException("ID not found: " + id);
         }
     }
 
