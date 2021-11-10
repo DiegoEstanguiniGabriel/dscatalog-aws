@@ -8,7 +8,6 @@ import com.devsuperior.dscatalog.repositories.ProductRepository;
 import com.devsuperior.dscatalog.services.exceptions.DatabaseException;
 import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
 import com.devsuperior.dscatalog.tests.Factory;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -112,7 +111,8 @@ public class ProductServiceTests {
     @Test
     public void findAllShouldReturnPage(){
         Pageable pageable = PageRequest.of(0, 10);
-        Page<ProductDTO> result = service.findAll(pageable);
+        //Page<ProductDTO> result = service.findAll(pageable);
+        Page<ProductDTO> result = service.findAll(0L, "", pageable);
 
         Assertions.assertNotNull(result);
         Mockito.verify(repository).findAll(pageable);
